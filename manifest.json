@@ -2,6 +2,7 @@
  "name": "Nitrogen PWA",
  "display": "fullscreen",
  "theme_color": "#00a8e6",
+ "gcm_sender_id": "370072803732", //push-notifications-app-b21dc
  "icons": [
   {
    "src": "images\/android-icon-144x144.png",
