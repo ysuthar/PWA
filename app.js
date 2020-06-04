@@ -1,6 +1,6 @@
 Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
-    setTimout(function(){displayNotification()},5000)
+    setTimeout(function(){displayNotification(); },10000)
 });
 
 document.querySelector('#notification-button').onclick = async () => {
