@@ -75,3 +75,37 @@ const createScheduledNotification = async (tag, title, timestamp) => {
     showTrigger: new TimestampTrigger(timestamp + 30 * 1000)
   });
 };
+
+
+
+/** QR Code Generator **/
+var qrcode = new QRCode("qrcode");
+
+function makeCode () {		
+	var elText = document.getElementById("qrtext");
+	
+	if (!elText.value) {
+		alert("Input a text");
+		elText.focus();
+		return;
+	}
+	
+	qrcode.makeCode(elText.value);
+}
+
+makeCode();
+
+/*$("#qrtext").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+*/
+
+document.querySelector('#regenerate-code').onclick = async () => {
+  makeCode();
+};
