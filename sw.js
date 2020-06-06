@@ -25,13 +25,24 @@ self.addEventListener('notificationclick', event => {
   if (event.action === 'close') {
     event.notification.close();
   } else {
-    self.clients.openWindow('https://www.nvizionsolutions.com/');
+    self.clients.openWindow('https://pwa.nvizion.io/');
   }
 });
 
 self.addEventListener('push', event => {
+
+  var body;
+
+  if (event.data) {
+    body = event.data.text();
+  } else {
+    body = 'Push message no payload';
+  }
+
+  console.log('body', body)
+
   const options = {
-    body: 'Here is a notification body!',
+    body: body,
     icon: 'images/logo.png',
     vibrate: [100, 50, 100],
     data: {
@@ -39,7 +50,7 @@ self.addEventListener('push', event => {
       primaryKey: 1
     },
     actions: [
-      {action: 'explore', title: 'Explore this new world',
+      {action: 'explore', title: 'Explore more',
         icon: 'images/tick.png'},
       {action: 'close', title: 'Close notification',
         icon: 'images/xmark.png'},
@@ -47,7 +58,7 @@ self.addEventListener('push', event => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('Push Notification', options)
+    self.registration.showNotification('Web-Push Notification..!!', options)
   );
 });
 

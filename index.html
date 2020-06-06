@@ -5,57 +5,58 @@
   <title>Nitrogen PWA App</title>
   <link rel="manifest" href="manifest.json">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }).catch(function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  }
-  </script>
 
 </head>
 
 <body>
   <main>
-      <nav>
+      <header>
         <img src="images/logo.png" alt="Nitrogen PWA"/><h1>Nitrogen PWA</h1>
         <ul>
           <li><a href="#">Help</a></li>
         </ul>
-      </nav>
+      </header>
+
       <div class="container">
         <div>
           <h3>Welcome User...!!</h3>
+
+          <div class="queue-status">
+            <h2>Your Queue status</h2>
+            <p>{ Status Info }</p>
+
+            <p>Your Location: {}</p>
+          </div>
         </div>
-
-        <div class="queue-status">
-          <h2>Your Queue status</h2>
-          <p>{ Status Info }</p>
-
-          <p>Your Location: {}</p>
-        </div>
-
+          
         <div>
-          <button id="notification-button">Enable Notification</button>
-          <button id="notification-cancel">Cancel Notification</button>
-        </div>
-
-         <div>
           <h2>QR Code</h2>
           <div id="qrcode"></div>
-          <input id="qrtext" type="text" value="https://www.nvizionsolutions.com/" style="width:100%" /><br />
+          <input id="qrtext" type="text" value="https://www.nvizionsolutions.com/" style="width:100%" />
+          <br />
           <button id="regenerate-code">Regenerate QR Code</button>
         </div>
 
+        <div class="js-subscription-details">
+          <h2>Push Notification Details</h2>
+          <a href="https://web-push-codelab.glitch.me//">Push Companion
+          Site</a> and it'll send a push message for you, using the application
+          server keys on the site - so make sure they match.</p>
+          <pre><code class="js-subscription-json"></code></pre>
+        </div>
+
       </div>
+
+      <footer>
+          <button disabled class="js-push-btn">Enable Web-Push Messaging</button>
+          <button id="notification-button">Send Notification</button>
+          <button id="notification-cancel">Cancel Notification</button>
+      </footer>
     </main>
+
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/qrcode.min.js"></script>

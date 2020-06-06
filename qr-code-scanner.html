@@ -5,7 +5,7 @@
   <title>Nitrogen PWA App</title>
   <link rel="manifest" href="manifest.json">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <script>
@@ -53,6 +53,7 @@
             <div id="outputMessage">No QR code detected.</div>
             <div hidden><b>Data:</b> <span id="outputData"></span></div>
           </div>
+          <!--button id="rescan-code">Regenerate QR Code</button-->
           
         </div>
 
@@ -61,6 +62,7 @@
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jsQR.js"></script>
+  <script src="js/app.js"></script>
 
 <script>
     var video = document.createElement("video");
@@ -70,6 +72,9 @@
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
+    //var rescanButton = document.getElementById("rescan-code");
+
+    //rescanButton.hidden = true;
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -110,13 +115,20 @@
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
+          //canvasElement.hidden = true;
+          //rescanButton.hidden = false
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
         }
       }
       requestAnimationFrame(tick);
-    }
+    };
+
+    /*document.querySelector('#rescan-code').onclick = async () => {
+        canvasElement.hidden = false;
+    };*/
+
   </script>
 </body>
 </html>
