@@ -24,28 +24,26 @@
 
 <body>
   <main>
-      <nav>
+      <header>
         <img src="images/logo.png" alt="Nitrogen PWA"/><h1>Nitrogen PWA</h1>
         <ul>
           <li><a href="#">Help</a></li>
         </ul>
-      </nav>
+      </header>
+      
       <div class="container">
         <div>
-          <h3>Welcome Admin...!!</h3>
-        </div>
+          <div>
+            <h3>Welcome Admin...!!</h3>
+          </div>
 
-        <div class="queue-status">
-          <h2>Current Queue Information</h2>
-          <p>{ Status Info }</p>
+          <div class="queue-status">
+            <h2>Current Queue Information</h2>
+            <p>{ Status Info }</p>
+          </div>
         </div>
 
         <div>
-          <button id="notification-button">Enable Notification</button>
-          <button id="notification-cancel">Cancel Notification</button>
-        </div>
-
-         <div>
           <h2>QR Code Reader</h2>
           <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
           <canvas id="canvas" hidden></canvas>
@@ -54,10 +52,21 @@
             <div hidden><b>Data:</b> <span id="outputData"></span></div>
           </div>
           <!--button id="rescan-code">Regenerate QR Code</button-->
-          
+        </div>
+
+        <div class="js-subscription-details">
+          <h2>Push Notification Details</h2>
+          <!-- href="https://web-push-codelab.glitch.me//" -->
+          <pre><code class="js-subscription-json"></code></pre>
         </div>
 
       </div>
+
+      <footer>
+          <button disabled class="js-push-btn">Enable Web-Push Messaging</button>
+          <button id="notification-button">Send Notification</button>
+          <button id="notification-cancel">Cancel Notification</button>
+      </footer>
     </main>
 
   <script src="js/jquery.min.js"></script>
