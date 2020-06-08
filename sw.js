@@ -21,6 +21,24 @@ if (workbox) {
   // console.log('Boo! Workbox didnt load 😬');
 }*/
 
+function getGeoLocation() {
+  console.log(navigator, "GPS");
+  
+  if (navigator.geolocation)
+    {  
+        navigator.geolocation.getCurrentPosition((position)=>{
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+          console.log(lat, lon)
+        });
+    }
+    else
+    {  
+        console.log("hello this") ;
+    }
+}
+getGeoLocation();
+
 self.addEventListener('notificationclick', event => {
   if (event.action === 'close') {
     event.notification.close();
@@ -57,9 +75,20 @@ self.addEventListener('push', event => {
     ]
   };
 
-  event.waitUntil(
-    self.registration.showNotification('Web-Push Notification..!!', options)
-  );
+  // event.waitUntil(
+  //   self.registration.showNotification('Web-Push Notification..!!', options)
+  // );
+  
+  setTimeout(() => {
+    self.registration.showNotification('Web-Push Notification..!!', options);
+  }, 10000);
+
 });
 
-
+self.addEventListener('sync', function(event) {
+  console.log("enter sync");
+  if (event.tag == 'sendGeoLocation') {
+    console.log("sendGeoLocation");
+    event.waitUntil(getGeoLocation());
+  }
+});

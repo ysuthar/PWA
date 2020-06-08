@@ -23,7 +23,7 @@ function urlB64ToUint8Array(base64String) {
 
 
 /** ServiceWorker Registration **/
-  if ('serviceWorker' in navigator && 'PushManager' in window) {
+  if ('serviceWorker' in navigator && 'PushManager' in window && 'SyncManager' in window) {
     console.log('Service Worker and Push is supported');
 
     navigator.serviceWorker.register('sw.js')
@@ -31,6 +31,9 @@ function urlB64ToUint8Array(base64String) {
       console.log('Service Worker is registered', swReg);
 
       swRegistration = swReg;
+
+      swRegistration.sync.register('sendGeoLocation');
+
       initializeUI();
     })
     .catch(function(error) {
